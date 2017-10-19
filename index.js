@@ -23,22 +23,22 @@ function newListItem(name, img) {
 function removeItem() {
   event.preventDefault();
   var item = $(this).parent().parent();
-
-  item.fadeOut(function(){
+  console.log(item);
+  item.hide(function(){
     item.remove();
   });
 }
 
 function updatePreList(json){
   var listLength = json.list.length;
-
+  $("#explanation").text(json.explanation)
   for (var i =0; i < listLength; i++) {
     var item = json.list[i];
     item = newListItem(item.name, item.img);
 
-    item.find(".botao-remover").click(removeItem);
+    item.find(".btn-danger").click(removeItem);
 
-    $("#trimmer").append(item);
+    $(".trimmer-list").append(item);
   };
 }
 
@@ -58,6 +58,5 @@ var iceCreamJson = {
 }
 
 $(document).ready(function(){
-  console.log("ai papai")
   updatePreList(iceCreamJson);
 });
