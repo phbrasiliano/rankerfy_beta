@@ -37,17 +37,22 @@ body > .container {
 .item {
   height: 5em;
   text-align: center;
+  overflow: hidden;
 }
 
 .img-item {
   max-width: auto;
-  max-height: 100%;
+  max-height: 4.9em;
 }
 
 #explanation {
   font-size: 1.2em;
 }
 
+#continue {
+  margin-top: 1em;
+}
+
 #trimmer, #picker{
-  display: none;
+
 }

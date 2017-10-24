@@ -1,3 +1,4 @@
+// returns a Jquery item for the trimmer list of the application
 function newListItem(name, img) {
   var item = $("<div>").addClass("row").addClass("item");
   var imgColumn = $("<div>").addClass("col-2");
@@ -21,12 +22,10 @@ function newListItem(name, img) {
 }
 
 function removeItem() {
-  event.preventDefault();
-  var item = $(this).parent().parent();
-  console.log(item);
-  item.hide(function(){
-    item.remove();
-  });
+  //event.preventDefault();
+  //var item = $(this).parent().parent();
+  //console.log(item);
+  $(this).parent().parent().fadeOut(1000);
 }
 
 function updatePreList(json){
