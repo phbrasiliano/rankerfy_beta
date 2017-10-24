@@ -1,44 +1,75 @@
 // returns a Jquery item for the trimmer list of the application
-function newListItem(name, img) {
-  var item = $("<div>").addClass("row").addClass("item");
-  var imgColumn = $("<div>").addClass("col-2");
-  var nameColumn = $("<div>").addClass("col-6").text(name);
-  var removeColumn = $("<div>").addClass("col-2");
-  var imglink = $("<img>").addClass("img-item").attr("src", img).attr("alt", name);
+function newTrimmerItem(name, img) {
+  var item = $("<div>").addClass("row").addClass("item-trimmer");
+  var imgCol = $("<div>").addClass("col-3");
+  var nameCol = $("<div>").addClass("col-6").text(name);
+  var removeCol = $("<div>").addClass("col-3");
+  var imgLink = $("<img>").addClass("img-item").attr("src", img).attr("alt", name);
   var button = $("<button>").attr("href", "#").addClass("btn btn-danger");
   var icon = $("<i>").addClass("fa").addClass("fa-times");
 
-
   button.append(icon);
-  removeColumn.append(button);
-  imgColumn.append(imglink);
+  removeCol.append(button);
+  imgCol.append(imgLink);
   
-
-  item.append(imgColumn);
-  item.append(nameColumn);
-  item.append(removeColumn);
+  item.append(imgCol);
+  item.append(nameCol);
+  item.append(removeCol);
   
   return item;
 }
 
-function removeItem() {
-  //event.preventDefault();
-  //var item = $(this).parent().parent();
-  //console.log(item);
-  $(this).parent().parent().fadeOut(1000);
+// returns a Jquery item for the final Rank of the application
+function newFinalItem(name, img, i) {
+  var i = i + 1
+
+  var item = $("<div>").addClass("row").addClass("item-final");
+  var numCol = $("<div>").addClass("col-1").text(i.toString() + ".");
+  var nameCol = $("<div>").addClass("col-6").text(name);
+  var imgLink = $("<img>").addClass("img-item").attr("src", img).attr("alt", name);
+  var imgCol = $("<div>").addClass("col-3");
+
+  imgCol.append(imgLink);
+
+  item.append(numCol);
+  item.append(imgCol);
+  item.append(nameCol);
+
+  return item;
 }
 
-function updatePreList(json){
+// removes the row of a trimmer item
+function removeItem() {
+  event.preventDefault();
+  var item = $(this).parent().parent()
+  item.fadeOut(400, function(){
+    item.remove()
+  });
+}
+
+// loops through the given json and creates the trimmer list on the page view
+function updateTrimmerList(json){
   var listLength = json.list.length;
   $("#explanation").text(json.explanation)
   for (var i =0; i < listLength; i++) {
     var item = json.list[i];
-    item = newListItem(item.name, item.img);
+    item = newTrimmerItem(item.name, item.img);
 
     item.find(".btn-danger").click(removeItem);
 
     $(".trimmer-list").append(item);
   };
+}
+
+// loops through the given json and creates the trimmer list on the page view
+function updateFinalList(list){
+  var listLength = list.length;
+  for (var i=0; i <listLength; i++) {
+    var item = list[i];
+    item = newFinalItem(item.name, item.img, i)
+
+    $(".rank-list").append(item);
+  }
 }
 
 var iceCreamJson = {
@@ -57,5 +88,6 @@ var iceCreamJson = {
 }
 
 $(document).ready(function(){
-  updatePreList(iceCreamJson);
+  updateTrimmerList(iceCreamJson);
+  updateFinalList(iceCreamJson["list"]);
 });
