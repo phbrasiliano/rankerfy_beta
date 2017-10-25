@@ -58,6 +58,9 @@ function updateTrimmerList(json){
     item.find(".btn-danger").click(removeItem);
 
     $(".trimmer-list").append(item);
+    $("#continue-trimer").click(function(){
+
+    });
   };
 }
 
@@ -67,7 +70,6 @@ function updateFinalList(list){
   for (var i=0; i <listLength; i++) {
     var item = list[i];
     item = newFinalItem(item.name, item.img, i)
-
     $(".rank-list").append(item);
   }
 }
@@ -88,6 +90,10 @@ var iceCreamJson = {
 }
 
 $(document).ready(function(){
-  updateTrimmerList(iceCreamJson);
-  updateFinalList(iceCreamJson["list"]);
+ $("#pick-ice-cream").click(function(){
+    updateTrimmerList(iceCreamJson);
+    $("#picker").fadeOut(400, function(){
+      $("#trimmer").fadeIn(400);
+    });
+  });
 });
