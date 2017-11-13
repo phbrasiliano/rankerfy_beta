@@ -2,7 +2,7 @@
 function newTrimmerItem(name, img) {
   var item = $("<div>").addClass("row").addClass("item-trimmer");
   var imgCol = $("<div>").addClass("col-3");
-  var nameCol = $("<div>").addClass("col-6").text(name);
+  var nameCol = $("<div>").addClass("col-6 itemName").text(name);
   var removeCol = $("<div>").addClass("col-3");
   var imgLink = $("<img>").addClass("img-item").attr("src", img).attr("alt", name);
   var button = $("<button>").attr("href", "#").addClass("btn btn-danger");
@@ -58,10 +58,15 @@ function updateTrimmerList(json){
     item.find(".btn-danger").click(removeItem);
 
     $(".trimmer-list").append(item);
-    $("#continue-trimer").click(function(){
-
-    });
   };
+  $("#continue-trimmer").click(function(){
+    var trimmedList = [];
+    $(".itemName").each(function(){trimmedList.push($(this).text())});
+    console.log(trimmedList)
+    $("#trimmer").fadeOut(400, function(){
+      $("#ranker").fadeIn(400);
+    });
+  });
 }
 
 // loops through the given json and creates the trimmer list on the page view
@@ -73,6 +78,29 @@ function updateFinalList(list){
     $(".rank-list").append(item);
   }
 }
+
+// Function to shuffle the array
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+
 
 var iceCreamJson = {
   "title": "Ice Cream Flavors",
