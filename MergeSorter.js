@@ -76,10 +76,9 @@ MergeSorter.prototype.setComparisonResult = function (firstIsChosen) {
 		this.currentLayer.shift();
 		this.currentLayer.shift();
 	}
-	console.log(this.currentLayer.length);
 	if (this.currentLayer.length == 1)
 		this.nextLayer.push(this.currentLayer.pop());
-		
+
 	// If the current layer is empty, move to the next layer
 	if (this.currentLayer.length === 0)
 		this.proceedWithNextLayer();
