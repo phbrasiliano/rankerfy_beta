@@ -38,6 +38,16 @@ function newFinalItem(name, img, i) {
   return item;
 }
 
+function updateRankerItems(items, baseJson){
+  var leftItem = items[0]
+  var rightItem = items[1]
+  $("#left-ranker").children("p").text(leftItem)
+  $("#left-ranker").children("img").attr("src", baseJson.list[leftItem]["img"])
+
+  $("#right-ranker").children("p").text(rightItem)
+  $("#right-ranker").children("img").attr("src", baseJson.list[rightItem]["img"])
+}
+
 // removes the row of a trimmer item
 function removeItem() {
   event.preventDefault();
@@ -112,13 +122,10 @@ $(document).ready(function(){
 
     sorter = new MergeSorter();
     sorter.init(trimmedList);
+    updateRankerItems(sorter.getNextComparisonItems(), listToRank)
     sorter.onChange(() => {
-
+      updateRankerItems(sorter.getNextComparisonItems(), listToRank)
     });
-
-  	sorter.onLayerSwap(() => {
-
-  	});
 
     sorter.onFinish(sortedList => {
       finalList = sortedList;

@@ -4,7 +4,7 @@
   <title>Rankerfy Structure</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./styles.css">
@@ -47,14 +47,14 @@
     <h2>Rank it!</h2>
     <p class="lead">Time to choose! Pick your favourite among these two options:</p>
     <div class="row">
-      <div class="col-6">
-        <img class="img-thumbnail" src="http://www.tidyaire.com/uploads/7/4/2/9/74291919/s677363335125410898_p12_i1_w500.jpeg" alt="Vanilla">
-        Vanilla
+      <div id="left-ranker" class="col-6">
+        <img class="img-thumbnail" src="" alt="Vanilla">
+        <p>Vanilla</p>
         <button class="btn btn-block">I prefer this</button>
       </div>
-      <div class="col-6">
-        <img class="img-thumbnail" src="http://www.tidyaire.com/uploads/7/4/2/9/74291919/s677363335125410898_p12_i1_w500.jpeg" alt="Vanilla">
-        Vanilla
+      <div id="right-ranker" class="col-6">
+        <img class="img-thumbnail" src="" alt="Vanilla">
+        <p>Placeholder</p>
         <button class="btn btn-block">I prefer this</button>
       </div>
     </div>
@@ -67,7 +67,7 @@
 
   <footer class="footer">
     <div class="container">
-      <span class="text-muted center">Made by Phellipe Brasiliano - 
+      <span class="text-muted center">Made by Phellipe Brasiliano -
         <a href="mailto:phbrasiliano@gmail.com?Subject=About%20Rankerfy" target="_blank">Email <i class="fa fa-envelope-o" aria-hidden="true"></i></a>
         <a href="https://github.com/phbrasiliano" target="_blank">Github <i class="fa fa-github" aria-hidden="true"></i></a>
         <a href="https://twitter.com/Phellpsbr" target="_blank">Twitter <i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -75,8 +75,9 @@
     </div>
   </footer>
   <script src="jquery-3.2.1.min.js"></script>
+  <script src="./ranks.js"></script>
+  <script src="./MergeSorter.js"></script>
   <script src="./index.js"></script>
-  <script src="./async_ranker.js"></script>
 
 </body>
 
