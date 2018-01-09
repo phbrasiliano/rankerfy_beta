@@ -11,11 +11,11 @@ function newTrimmerItem(name, img) {
   button.append(icon);
   removeCol.append(button);
   imgCol.append(imgLink);
-  
+
   item.append(imgCol);
   item.append(nameCol);
   item.append(removeCol);
-  
+
   return item;
 }
 
@@ -49,38 +49,27 @@ function removeItem() {
 
 // loops through the given json and creates the trimmer list on the page view
 function updateTrimmerList(json){
-  var listLength = json.list.length;
   $("#explanation").text(json.explanation)
-  for (var i =0; i < listLength; i++) {
-    var item = json.list[i];
-    item = newTrimmerItem(item.name, item.img);
+  for (key in json.list) {
+    var item = newTrimmerItem(key, json.list[key]["img"]);
 
     item.find(".btn-danger").click(removeItem);
 
     $(".trimmer-list").append(item);
   };
-  $("#continue-trimmer").click(function(){
-    var trimmedList = [];
-    $(".itemName").each(function(){trimmedList.push($(this).text())});
-    console.log(trimmedList)
-    $("#trimmer").fadeOut(400, function(){
-      $("#ranker").fadeIn(400);
-    });
-  });
 }
 
-// loops through the given json and creates the trimmer list on the page view
-function updateFinalList(list){
-  var listLength = list.length;
-  for (var i=0; i <listLength; i++) {
-    var item = list[i];
-    item = newFinalItem(item.name, item.img, i)
+// loops through the given list and creates the final list on the page view
+// uses a base json to get the remaining information
+function updateFinalList(list, baseJson){
+  for (var i=0; i < list.length; i++) {
+    var key = list[i]
+    var item = newFinalItem(key, baseJson.list[key]["img"], i);
     $(".rank-list").append(item);
   }
 }
 
 // Function to shuffle the array
-
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -100,28 +89,53 @@ function shuffle(array) {
   return array;
 }
 
-
-
-var iceCreamJson = {
-  "title": "Ice Cream Flavors",
-  "explanation": "Those are the most popular Ice Cream Flavors according to the International Ice Cream Association. From those flavors, which ones are YOUR favorites?",
-  "list": [ {"name": "Vanilla", "img": "http://www.tidyaire.com/uploads/7/4/2/9/74291919/s677363335125410898_p12_i1_w500.jpeg"},
-            {"name": "Chocolate", "img": "http://www.milkmaid.in/Images/Recipe/Chocolate%20694x400_11.JPG"},
-            {"name": "Strawberry", "img": "http://holisticallyengineered.com/wp-content/uploads/2012/09/strawberry-ice-cream_tuneblog-1.jpg"},
-            {"name": "Neapolitan", "img": "http://www.articlesweb.org/blog/wp-content/uploads/2011/11/neapolitan-ice-cream-origin-and-recipe-sources-4.jpg"},
-            {"name": "Chocolate chip", "img": "http://www.vegrecipesofindia.com/wp-content/uploads/2016/12/chocolate-chips-ice-cream-recipe-12.jpg"},
-            {"name": "Cookies and Cream", "img": "http://www.chewoutloud.com/wp-content/uploads/2013/08/Cookies-n-Cream-Ice-Cream-2.jpg"},
-            {"name": "Cherry", "img": "http://www.seriouseats.com/recipes/assets_c/2012/06/20120627-cherry-ice-cream-primary-thumb-625xauto-252967.jpg"},
-            {"name": "Chocolate almond", "img": "https://barefeetinthekitchen.com/wp-content/uploads/2013/07/chocolate-almond-ice-cream-8.jpg"},
-            {"name": "Pistachio", "img": "https://www.tablefortwoblog.com/wp-content/uploads/2014/04/pistachio-ice-cream-tablefortwoblog-2.jpg"},
-            {"name": "Mint Chocolate", "img": "http://www.recipe4living.com/assets/itemimages/400/400/3/default_36fc5210cd4f4bae865ead91bef9071c_junemediamint.jpg"}]
-}
-
+// Runs the program
 $(document).ready(function(){
- $("#pick-ice-cream").click(function(){
-    updateTrimmerList(iceCreamJson);
+  var trimmedList = [];
+  var finalList = [];
+  var sorter;
+  var listToRank;
+
+  $("#pick-ice-cream").click(function(){
+    listToRank = iceCreamJson
+    updateTrimmerList(listToRank);
     $("#picker").fadeOut(400, function(){
       $("#trimmer").fadeIn(400);
+    });
+  });
+
+  $("#continue-trimmer").click(function(){
+    $(".itemName").each(function(){trimmedList.push($(this).text())});
+    $("#trimmer").fadeOut(400, function(){
+      $("#ranker").fadeIn(400);
+    });
+
+    sorter = new MergeSorter();
+    sorter.init(trimmedList);
+    sorter.onChange(() => {
+
+    });
+
+  	sorter.onLayerSwap(() => {
+
+  	});
+
+    sorter.onFinish(sortedList => {
+      finalList = sortedList;
+  		// stop sorting
+  		sort = false;
+      updateFinalList(finalList, listToRank);
+      $("#ranker").fadeOut(400, function(){
+        $("#final-rank").fadeIn(400);
+      });
+  	});
+
+    $('#left-ranker').click(function (){
+      sorter.setComparisonResult(true);
+    });
+
+    $('#right-ranker').click(function (){
+      sorter.setComparisonResult(false);
     });
   });
 });
