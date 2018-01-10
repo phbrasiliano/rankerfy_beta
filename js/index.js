@@ -114,8 +114,17 @@ $(document).ready(function(){
     });
   });
 
+  $("#pick-pixar").click(function(){
+    listToRank = pixarJson
+    updateTrimmerList(listToRank);
+    $("#picker").fadeOut(400, function(){
+      $("#trimmer").fadeIn(400);
+    });
+  });
+
   $("#continue-trimmer").click(function(){
     $(".itemName").each(function(){trimmedList.push($(this).text())});
+    shuffle(trimmedList);
     $("#trimmer").fadeOut(400, function(){
       $("#ranker").fadeIn(400);
     });
