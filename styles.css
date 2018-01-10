@@ -34,17 +34,68 @@ body > .container {
   border: 1px solid rgba(86,61,124,.2);
 }
 
-.item-trimmer {
-  height: 5em;
-  text-align: center;
-  overflow: hidden;
-}
-
 .img-item {
   max-width: auto;
   max-height: 4.9em;
 }
 
+.itemName {
+  text-align: left;
+  font-size: 1.3em;
+  padding-top: 0.7em;
+}
+
+.item-trimmer {
+  height: 6em;
+  text-align: center;
+  overflow: hidden;
+  border: 1px solid grey;
+  border-radius: 1em;
+  padding: 0.2em;
+  margin-bottom: 0.3em;
+}
+
+.img-trimmer{
+  max-height: 100%;
+}
+
+.btn-danger {
+  margin-top: 10px;
+  font-size: 1.5em
+}
+
+.itemName, .btn-danger{
+  margin-top: 0.8em;
+}
+
+.ranker-col, .final-img-col{
+  text-align: center;
+}
+
+.item-final {
+  height: 8em;
+}
+
+.first-place {
+  height: 16em;
+}
+
+.img-final {
+  max-height: 100%;
+}
+
+.item-final h3{
+  padding-top: 2em;
+}
+
+.item-final p{
+  padding-top: 2em;
+}
+
+.item-final{
+  padding: 0.1em;
+  border-bottom: 0.3em;
+}
 #explanation {
   font-size: 1.2em;
 }

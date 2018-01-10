@@ -1,10 +1,10 @@
 // returns a Jquery item for the trimmer list of the application
 function newTrimmerItem(name, img) {
   var item = $("<div>").addClass("row").addClass("item-trimmer");
-  var imgCol = $("<div>").addClass("col-3");
-  var nameCol = $("<div>").addClass("col-6 itemName").text(name);
-  var removeCol = $("<div>").addClass("col-3");
-  var imgLink = $("<img>").addClass("img-item").attr("src", img).attr("alt", name);
+  var imgCol = $("<div>").addClass("col-5");
+  var nameCol = $("<div>").addClass("col-3 itemName").text(name);
+  var removeCol = $("<div>").addClass("col-4");
+  var imgLink = $("<img>").attr("src", img).attr("alt", name).addClass("img-thumbnail").addClass("img-trimmer");
   var button = $("<button>").attr("href", "#").addClass("btn btn-danger");
   var icon = $("<i>").addClass("fa").addClass("fa-times");
 
@@ -22,16 +22,25 @@ function newTrimmerItem(name, img) {
 // returns a Jquery item for the final Rank of the application
 function newFinalItem(name, img, i) {
   var i = i + 1
+  var finalText = "#" + i.toString() + " " + name
 
   var item = $("<div>").addClass("row").addClass("item-final");
-  var numCol = $("<div>").addClass("col-1").text(i.toString() + ".");
-  var nameCol = $("<div>").addClass("col-6").text(name);
-  var imgLink = $("<img>").addClass("img-item").attr("src", img).attr("alt", name);
-  var imgCol = $("<div>").addClass("col-3");
+  var nameCol = $("<div>");
+  var imgLink = $("<img>").addClass("img-fluid").addClass("img-final").attr("src", img).attr("alt", name);
+  var imgCol = $("<div>").addClass("final-img-col");
+
+  if(i == 1){
+    finalText = "<h3>" + finalText + "</h3>";
+    item.addClass("first-place");
+    nameCol.addClass("col-6").html(finalText);
+    imgCol.addClass("col-6");
+  } else {
+    nameCol.addClass("col-6").html(finalText);
+    imgCol.addClass("col-5");
+  };
 
   imgCol.append(imgLink);
 
-  item.append(numCol);
   item.append(imgCol);
   item.append(nameCol);
 
@@ -41,10 +50,10 @@ function newFinalItem(name, img, i) {
 function updateRankerItems(items, baseJson){
   var leftItem = items[0]
   var rightItem = items[1]
-  $("#left-ranker").children("p").text(leftItem)
+  $("#left-ranker").children("h3").text(leftItem)
   $("#left-ranker").children("img").attr("src", baseJson.list[leftItem]["img"])
 
-  $("#right-ranker").children("p").text(rightItem)
+  $("#right-ranker").children("h3").text(rightItem)
   $("#right-ranker").children("img").attr("src", baseJson.list[rightItem]["img"])
 }
 
@@ -107,7 +116,7 @@ $(document).ready(function(){
   var listToRank;
 
   $("#pick-ice-cream").click(function(){
-    listToRank = iceCreamJson
+    listToRank = iceCreamJson;
     updateTrimmerList(listToRank);
     $("#picker").fadeOut(400, function(){
       $("#trimmer").fadeIn(400);
@@ -115,7 +124,7 @@ $(document).ready(function(){
   });
 
   $("#pick-pixar").click(function(){
-    listToRank = pixarJson
+    listToRank = pixarJson;
     updateTrimmerList(listToRank);
     $("#picker").fadeOut(400, function(){
       $("#trimmer").fadeIn(400);
@@ -133,7 +142,10 @@ $(document).ready(function(){
     sorter.init(trimmedList);
     updateRankerItems(sorter.getNextComparisonItems(), listToRank)
     sorter.onChange(() => {
-      updateRankerItems(sorter.getNextComparisonItems(), listToRank)
+      $("#ranker").fadeOut(100, function(){
+        updateRankerItems(sorter.getNextComparisonItems(), listToRank)
+        $("#ranker").fadeIn(100);
+      });
     });
 
     sorter.onFinish(sortedList => {
