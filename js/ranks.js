@@ -16,7 +16,7 @@ var iceCreamJson = {
 
 var pixarJson = {
   "title": "Pixar Films",
-  "explanation": "Those are all the Pixar films released until the end of 2017. Rank the ones you watched and find YOUR favourites!",
+  "explanation": "Those are all the Pixar films released until the end of 2017. Rank the ones you watched and find out YOUR favourites!",
   "list": { "Toy Story": {"img": "./img/pixar/toys.jpg", "info":"<b>Year:</b> 1995"},
             "A Bug's Life": {"img": "./img/pixar/bugs.jpg", "info":"<b>Year:</b> 1998"},
             "Toy Story 2": {"img": "./img/pixar/toys2.jpg", "info":"<b>Year:</b> 1999"},
