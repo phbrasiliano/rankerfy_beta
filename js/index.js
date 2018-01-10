@@ -59,7 +59,7 @@ function removeItem() {
 
 // loops through the given json and creates the trimmer list on the page view
 function updateTrimmerList(json){
-  $("#explanation").text(json.explanation)
+  $("#explanation").html(json.explanation)
   for (key in json.list) {
     var item = newTrimmerItem(key, json.list[key]["img"]);
 
