@@ -131,6 +131,14 @@ $(document).ready(function(){
     });
   });
 
+  $("#pick-goty-2017").click(function(){
+    listToRank = goty2017json;
+    updateTrimmerList(listToRank);
+    $("#picker").fadeOut(400, function(){
+      $("#trimmer").fadeIn(400);
+    });
+  });
+
   $("#continue-trimmer").click(function(){
     $(".itemName").each(function(){trimmedList.push($(this).text())});
     shuffle(trimmedList);
