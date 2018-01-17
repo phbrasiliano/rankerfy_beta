@@ -59,7 +59,6 @@ function updateRankerItems(items, baseJson){
 
 // removes the row of a trimmer item
 function removeItem() {
-  event.preventDefault();
   var item = $(this).parent().parent()
   item.fadeOut(400, function(){
     item.remove()
@@ -151,8 +150,10 @@ $(document).ready(function(){
     updateRankerItems(sorter.getNextComparisonItems(), listToRank)
     sorter.onChange(() => {
       $("#ranker").fadeOut(100, function(){
-        updateRankerItems(sorter.getNextComparisonItems(), listToRank)
-        $("#ranker").fadeIn(100);
+        if (sorter.getNextComparisonItems()) {
+          updateRankerItems(sorter.getNextComparisonItems(), listToRank)
+          $("#ranker").fadeIn(100);
+        }
       });
     });
 
