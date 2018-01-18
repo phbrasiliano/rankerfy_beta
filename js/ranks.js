@@ -41,7 +41,7 @@ var pixarJson = {
 
 var goty2017json = {
   "title": "Games of 2017",
-  "explanation": "Those are the 50 best reviewed games of 2017 according to Metacritic. Cross out the ones you did not play and find out your ranking for the year!<br>This list does not include games not originally released on 2017, so no ports, HD remasters, DLC or compilations. There are also only games with at least 20 reviews on one platform.<br><b><It might take a while until the whole list is sorted, be patient!/b>",
+  "explanation": "Those are the 50 best reviewed games of 2017 according to Metacritic. Cross out the ones you did not play and find out your ranking for the year!<br>This list does not include games not originally released on 2017, so no ports, HD remasters, DLC or compilations. There are also only games with at least 20 reviews on one platform.<br><b>It might take a while until the whole list is sorted, be patient!</b>",
   "list": { "The Legend of Zelda: Breath of the Wild" : {"img": "./img/goty2017/zelda.jpg", "info": "Platforms: "},
             "Super Mario Odyssey" : {"img": "./img/goty2017/mario.jpg", "info": "Platforms: "},
             "Persona 5" : {"img": "./img/goty2017/persona.jpg", "info": "Platforms: "},
