@@ -2,8 +2,8 @@
 function newTrimmerItem(name, img) {
   var item = $("<div>").addClass("row").addClass("item-trimmer");
   var imgCol = $("<div>").addClass("col-5");
-  var nameCol = $("<div>").addClass("col-3 itemName").text(name);
-  var removeCol = $("<div>").addClass("col-4");
+  var nameCol = $("<div>").addClass("col-5 itemName").text(name);
+  var removeCol = $("<div>").addClass("col-2");
   var imgLink = $("<img>").attr("src", img).attr("alt", name).addClass("img-thumbnail").addClass("img-trimmer");
   var button = $("<button>").attr("href", "#").addClass("btn btn-danger");
   var icon = $("<i>").addClass("fa").addClass("fa-times");

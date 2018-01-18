@@ -41,18 +41,17 @@ body > .container {
 
 .itemName {
   text-align: left;
-  font-size: 1.3em;
-  padding-top: 0.7em;
+  font-size: 1em;
+  margin-top: 0.5em;
 }
 
 .item-trimmer {
   height: 6em;
   text-align: center;
   overflow: hidden;
-  border: 1px solid grey;
-  border-radius: 1em;
-  padding: 0.2em;
-  margin-bottom: 0.3em;
+  border: 1px solid #535b63;
+  border-radius: 0.6em;
+  margin: 2px;
 }
 
 .img-trimmer{
@@ -60,24 +59,12 @@ body > .container {
 }
 
 .btn-danger {
-  margin-top: 10px;
+  margin-top: 1em;
   font-size: 1.5em
-}
-
-.itemName, .btn-danger{
-  margin-top: 0.8em;
 }
 
 .ranker-col, .final-img-col{
   text-align: center;
-}
-
-.item-final {
-  height: 8em;
-}
-
-.first-place {
-  height: 16em;
 }
 
 .img-final {
@@ -85,17 +72,32 @@ body > .container {
 }
 
 .item-final h3{
-  padding-top: 2em;
+  margin-top: 0.5em;
 }
 
 .item-final p{
-  padding-top: 2em;
+  margin-top: 1em;
 }
 
 .item-final{
-  padding: 0.1em;
-  border-bottom: 0.3em;
+  height: 3.2em;
+  margin-top: 0.1em;
+  font-size: 0.9em;
 }
+
+.first-place {
+  height: 7em;
+  margin-bottom: 0.5em;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .choice-name{
+    font-size: 1rem;
+  }
+}
+
 #explanation {
   font-size: 1.2em;
 }
