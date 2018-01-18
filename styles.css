@@ -49,8 +49,6 @@ body > .container {
 
 .item-trimmer {
   height: 6em;
-  text-align: center;
-  overflow: hidden;
   border: 1px solid #535b63;
   border-radius: 0.6em;
   margin: 2px;

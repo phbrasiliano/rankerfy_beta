@@ -1,8 +1,8 @@
 // returns a Jquery item for the trimmer list of the application
 function newTrimmerItem(name, img) {
   var item = $("<div>").addClass("row").addClass("item-trimmer");
-  var imgCol = $("<div>").addClass("col-5");
-  var nameCol = $("<div>").addClass("col-5 itemName").text(name);
+  var imgCol = $("<div>").addClass("col-4");
+  var nameCol = $("<div>").addClass("col-6 itemName").text(name);
   var removeCol = $("<div>").addClass("col-2");
   var imgLink = $("<img>").attr("src", img).attr("alt", name).addClass("img-thumbnail").addClass("img-trimmer");
   var button = $("<button>").attr("href", "#").addClass("btn btn-danger");
@@ -36,7 +36,7 @@ function newFinalItem(name, img, i) {
     imgCol.addClass("col-6");
   } else {
     nameCol.addClass("col-6").html(finalText);
-    imgCol.addClass("col-5");
+    imgCol.addClass("col-6");
   };
 
   imgCol.append(imgLink);
