@@ -2,6 +2,7 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
@@ -37,6 +38,7 @@ body > .container {
 .img-item {
   max-width: auto;
   max-height: 4.9em;
+  position: absolute;
 }
 
 .itemName {
@@ -56,6 +58,7 @@ body > .container {
 
 .img-trimmer{
   max-height: 100%;
+  position: absolute;
 }
 
 .btn-danger {
@@ -69,6 +72,7 @@ body > .container {
 
 .img-final {
   max-height: 100%;
+  position: absolute;
 }
 
 .item-final h3{
